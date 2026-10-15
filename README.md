@@ -160,20 +160,3 @@ python3 tests/testar_api.py
 
 No Windows, você pode usar `py tests/testar_api.py`. Para outra URL, passe-a como argumento. O script usa somente a biblioteca padrão do Python e valida CRUD, Location, dados persistidos, filtro, limites, precisão decimal, agrupamento, atualização do relatório e respostas 400/404. Ele cria plataformas exclusivas e remove apenas os documentos que criou.
 
-## Entrega
-
-Abra `CatalogoJogos.sln` no Visual Studio ou a pasta no VS Code. Leia o código do repositório e os exemplos acima antes de apresentar. Preencha os nomes/RMs dos integrantes na entrega, respeitando o limite de três pessoas do enunciado.
-
-## Validação realizada
-
-Em 09/10/2026, a solução compilou em Release com SDK .NET 8.0.425: zero erros e zero avisos. O script de integração concluiu **50 verificações**, executando a API contra um MongoDB 8.0.12 real. O cálculo foi conferido antes e depois de atualizar os dados, incluindo título com estoque zero e valores decimais.
-
-Os arquivos Dockerfile e Compose foram incluídos como alternativa de execução; a execução em containers não foi validada neste ambiente. A validação funcional utilizou a API e o servidor MongoDB executados diretamente.
-
-Referências oficiais usadas para conferir a implementação:
-
-- [ASP.NET Core — APIs com controllers](https://learn.microsoft.com/aspnet/core/web-api/?view=aspnetcore-8.0)
-- [MongoDB.Driver — consultas](https://www.mongodb.com/docs/drivers/csharp/current/crud/query/find/)
-- [MongoDB.Driver — agregações com LINQ](https://www.mongodb.com/docs/drivers/csharp/current/aggregation/linq/)
-
-Esta API cobre o escopo acadêmico do checkpoint.
