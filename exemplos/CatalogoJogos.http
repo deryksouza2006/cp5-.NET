@@ -1,0 +1,50 @@
+@baseUrl = http://localhost:5080
+# Copie o ID devolvido no POST para a variável abaixo.
+@id = COLE_O_OBJECTID_AQUI
+
+### 1. Cadastrar
+POST {{baseUrl}}/api/jogos
+Content-Type: application/json
+
+{
+  "titulo": "Gran Turismo 5",
+  "plataforma": "PlayStation 3",
+  "genero": "Corrida",
+  "preco": 79.90,
+  "anoLancamento": 2010,
+  "estoque": 3
+}
+
+### 2. Listar
+GET {{baseUrl}}/api/jogos
+
+### 3. Buscar por ID
+GET {{baseUrl}}/api/jogos/{{id}}
+
+### 4. Atualizar
+PUT {{baseUrl}}/api/jogos/{{id}}
+Content-Type: application/json
+
+{
+  "titulo": "Gran Turismo 5",
+  "plataforma": "PlayStation 3",
+  "genero": "Corrida",
+  "preco": 89.90,
+  "anoLancamento": 2010,
+  "estoque": 5
+}
+
+### 5. Filtrar (ponto como separador decimal)
+GET {{baseUrl}}/api/jogos/busca?plataforma=PlayStation%203&precoMaximo=100.00
+
+### 6. Relatório
+GET {{baseUrl}}/api/jogos/relatorio-estoque
+
+### 7. Excluir
+DELETE {{baseUrl}}/api/jogos/{{id}}
+
+### 8. ID inválido → 400
+GET {{baseUrl}}/api/jogos/abc
+
+### 9. ID válido inexistente → 404 em uma base sem esse documento
+GET {{baseUrl}}/api/jogos/000000000000000000000001

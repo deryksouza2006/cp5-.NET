@@ -1,0 +1,26 @@
+services:
+  mongo:
+    image: mongo:8.0.12
+    ports:
+      - "127.0.0.1:27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--quiet", "--eval", "db.adminCommand('ping').ok"]
+      interval: 5s
+      timeout: 5s
+      retries: 15
+
+  api:
+    build: .
+    ports:
+      - "127.0.0.1:5080:8080"
+    environment:
+      ASPNETCORE_URLS: http://+:8080
+      MongoDb__ConnectionString: mongodb://mongo:27017
+    depends_on:
+      mongo:
+        condition: service_healthy
+
+volumes:
+  mongo_data:
